@@ -10,17 +10,19 @@ Read our tutorial or watch the tutorial video (both coming soon).
 
 ## Things that you need to modify
 
-- [ ] This README.md file 
+- [ ] This README.md file, also remember to add the workflow badge
+- [ ] The workflow yml files, change the name of workflow
 - [ ] The ocp.toml file
 - [ ] scripts/prepare.sh
 - [ ] scripts/install.sh
 - [ ] Create any new configurations build folder
 
-## Things you need to check before submit PR to include this external project
+## Things you need to check before publish the external project
 
-- [ ] after you run the prepare.sh script, is the external project's source code resides in ocp/external/external_id/version/source?
+- [ ] run the prepare.sh script locally, is the external project's source code resides in ocp/external/external_id/version/source?
 - [ ] does the ocp/external/external_id/version folder also contains a ocp.toml file and any build configuration folders that you want?
-- [ ] if you run the ocp/external/external_id/version/configuration/install.sh script, is the build cache files put into ocp/external/external_id/version/configuration/build folder, and the install files put into ocp/external/external_id/version/configuration/install folder?
+- [ ] run the ocp/external/external_id/version/configuration/install.sh script locally, is the build cache files put into ocp/external/external_id/version/configuration/build folder, and the install files put into ocp/external/external_id/version/configuration/install folder?
+- [ ] run the External Build workflow
 
 ## Some rules
 1. Structure of the compressed source code must be like ocp/external/external_id/version/source, where the source code resides. The ocp.toml file should be copied to ocp/external/external_id/version folder.
