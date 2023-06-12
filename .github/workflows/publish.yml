@@ -5,13 +5,17 @@ defaults:
 on:
   workflow_dispatch:
     inputs:
+      id:
+        description: "Software id"
+        required: true
+        default: "spdlog"
       version:
         description: "Software version"
         required: true
         default: "1.11.0"
 jobs:
   build:
-    runs-on: [self-hosted, Linux]
+    runs-on: ubuntu-latest
     steps:
       - name: Basic info
         run: |
@@ -19,9 +23,19 @@ jobs:
           echo "Job triggered by ${{ github.event_name }}, on self-hosted ${{ runner.os }}."
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: Prepare and Install
+      - name: Publish
         run: |
-          external_id=spdlog
-          external_version=${{ github.event.inputs.version }}"
-          source scripts/prepare.sh $external_id $external_version
-          source ocp/external/$external_id/$external_version/default/install.sh
+          external_id = ${{ github.event.inputs.id }}
+          external_version=${{ github.event.inputs.version }}
+          source scripts/prepare.sh $external_version $external_id
+          xzfile="$external_id-$external_version.tar.xz"
+          rm ${external_id}-*.tar.xz
+          echo "Remove previous tar.xz files"
+          tar -cJf $xzfile ocp/
+          echo "Create external compressed file from ocp folder"
+      - name: rclone
+        uses: wei/rclone@v1
+        env:
+          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+        with:
+          args: copy ${{ github.event.inputs.id }}_${{ github.event.inputs.version }}.tar.xz ali:ocp-external/${{ github.event.inputs.id }}/
