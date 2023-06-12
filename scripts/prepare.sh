@@ -17,7 +17,7 @@ gz_file="$external_id-v$version.tar.gz"
 cd $script_dir/..
 
 # start the script
-rm *.tar.gz
+rm -rf *.tar.gz
 wget -O $gz_file $url
 echo "Download $external_id $version"
 rm -rf ocp
