@@ -1,0 +1,27 @@
+name: External Publish
+defaults:
+  run:
+    shell: bash -ileo pipefail {0}
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Software version"
+        required: true
+        default: "1.11.0"
+jobs:
+  build:
+    runs-on: [self-hosted, Linux]
+    steps:
+      - name: Basic info
+        run: |
+          echo "Build for ${{ github.ref }} branch in ${{ github.repository }} repository."
+          echo "Job triggered by ${{ github.event_name }}, on self-hosted ${{ runner.os }}."
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Prepare and Install
+        run: |
+          external_id=spdlog
+          external_version=${{ github.event.inputs.version }}"
+          source scripts/prepare.sh $external_id $external_version
+          source ocp/external/$external_id/$external_version/default/install.sh
