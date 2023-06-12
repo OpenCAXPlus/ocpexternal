@@ -14,7 +14,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 cd $script_dir/..
 
 # start the script
-rm ${external_id}-*.tar.xz
+rm -rf ${external_id}-*.tar.xz
 echo "Remove previous tar.xz files"
 tar -cJf $xzfile ocp/
 echo "Create external compressed file from ocp folder"

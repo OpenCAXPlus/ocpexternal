@@ -1,4 +1,4 @@
-name: External Publish
+name: spdlog Publish
 defaults:
   run:
     shell: bash -ileo pipefail {0}
@@ -23,19 +23,11 @@ jobs:
           echo "Job triggered by ${{ github.event_name }}, on self-hosted ${{ runner.os }}."
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: Setup Rclone
+        uses: AnimMouse/setup-rclone@v1
+        with:
+          rclone_config: ${{ secrets.RCLONE_CONFIG }}
       - name: Publish
         run: |
-          external_id = ${{ github.event.inputs.id }}
-          external_version=${{ github.event.inputs.version }}
-          source scripts/prepare.sh $external_version $external_id
-          xzfile="$external_id-$external_version.tar.xz"
-          rm ${external_id}-*.tar.xz
-          echo "Remove previous tar.xz files"
-          tar -cJf $xzfile ocp/
-          echo "Create external compressed file from ocp folder"
-      - name: rclone
-        uses: wei/rclone@v1
-        env:
-          RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
-        with:
-          args: copy ${{ github.event.inputs.id }}_${{ github.event.inputs.version }}.tar.xz ali:ocp-external/${{ github.event.inputs.id }}/
+          source scripts/prepare.sh ${{ github.event.inputs.version }} ${{ github.event.inputs.id }}
+          source scripts/publish.sh ${{ github.event.inputs.version }} ${{ github.event.inputs.id }}
