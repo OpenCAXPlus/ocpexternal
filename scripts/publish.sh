@@ -18,7 +18,7 @@ rm -rf ${external_id}-*.tar.xz
 echo "Remove previous tar.xz files"
 tar -cJf $xzfile ocp/
 echo "Create external compressed file from ocp folder"
-rclone copy -P $xzfile ali:ocp-external/$external_id/
+rclone copy -P $xzfile ali:ocp-external/$external_id
 echo "Upload compressed file to ocp-external/$external_id"
 
 # move back to the folder where you started
