@@ -12,7 +12,7 @@ Read our tutorial or watch the tutorial video (both coming soon).
 
 - [ ] This README.md file, also remember to add the workflow badge
 - [ ] The workflow yml files, change the name of workflow
-- [ ] The ocp.toml file
+- [ ] The ocp.yml file
 - [ ] scripts/prepare.sh
 - [ ] scripts/install.sh
 - [ ] Create any new configurations build and install script in the config folder
@@ -20,12 +20,12 @@ Read our tutorial or watch the tutorial video (both coming soon).
 ## Things you need to check before publish the external project
 
 - [ ] run the prepare.sh script locally, is the external project's source code resides in ocp/external/external_id/version/source?
-- [ ] does the ocp/external/external_id/version folder also contains a ocp.toml file and any build configuration folders that you want?
+- [ ] does the ocp/external/external_id/version folder also contains a ocp.yml file and any build configuration folders that you want?
 - [ ] run the ocp/external/external_id/version/config/$config.sh script locally, is the build cache files put into ocp/external/external_id/version/build/$config folder, and the install files put into ocp/external/external_id/version/install/$config folder?
 - [ ] run the External Build workflow
 
 ## Some rules
-1. Structure of the compressed source code must be like ocp/external/external_id/version/source, where the source code resides. The ocp.toml file should be copied to ocp/external/external_id/version folder.
+1. Structure of the compressed source code must be like ocp/external/external_id/version/source, where the source code resides. The ocp.yml file should be copied to ocp/external/external_id/version folder.
 2. Must use tar.xz to compress the ocp folder
 3. The install script must install compiled software to configuration subdirectory under ocp/external/external_id/version/install folder.
 

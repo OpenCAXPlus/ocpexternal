@@ -5,7 +5,6 @@
 version=${1}
 external_id=${2}
 
-
 # prepare necessary variables
 url="https://github.com/gabime/spdlog/archive/refs/tags/v$version.tar.gz"
 dir="ocp/external/$external_id/$version/source"
@@ -27,9 +26,8 @@ echo "Extract files to ocp folder"
 
 cp -r config "$dir/.."
 echo "Copy all configurations to ocp folder"
-cp ocp.toml "$dir/.."
-echo "Copy ocp.toml to ocp folder"
-
+cp ocp.yml "$dir/.."
+echo "Copy ocp.yml to ocp folder"
 
 # move back to the folder where you started
 cd -
