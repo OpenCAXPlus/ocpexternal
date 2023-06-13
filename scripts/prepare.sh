@@ -4,9 +4,7 @@
 # get command line arguments
 version=${1}
 external_id=${2}
-configurations=(
-    "default"
-)
+
 
 # prepare necessary variables
 url="https://github.com/gabime/spdlog/archive/refs/tags/v$version.tar.gz"
@@ -26,9 +24,8 @@ mkdir -p "$dir"
 echo "Create ocp folder structure"
 tar -xzf $gz_file -C $dir --strip-components=1
 echo "Extract files to ocp folder"
-for config in "${configurations[@]}"; do
-    cp -r "$config" "$dir/.."
-done
+
+cp -r config "$dir/.."
 echo "Copy all configurations to ocp folder"
 cp ocp.toml "$dir/.."
 echo "Copy ocp.toml to ocp folder"
