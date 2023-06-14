@@ -1,17 +1,17 @@
 name: external_name
 id: external_id
-default_version: "2.0.0"
-default_config: default
-version:
+default:
+  version: "2.0.0"
+  config: build
+versions:
   - id: "1.0.0"
     config: [build]
   - id: "2.0.0"
     config: [build]
-config:
+configs:
   - id: build
-    name: CMAKE_BUILD_TYPE
-    value: [Debug, Release]
-dependency:
-  external:
-    - id: dep1
-      version: ["1.0.0", "2.0.0"]
+    run: source config/default.sh
+dependencies:
+  - id: dep1
+    type: external
+    version: ["1.0.0", "2.0.0"]
