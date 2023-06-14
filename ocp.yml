@@ -1,13 +1,12 @@
 name: external_name
 id: external_id
+type: external
 default:
   version: "2.0.0"
   config: build
 versions:
   - id: "1.0.0"
-    config: [build]
   - id: "2.0.0"
-    config: [build]
 configs:
   - id: build
     run: source config/default.sh
