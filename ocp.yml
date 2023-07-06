@@ -3,6 +3,10 @@ id: external_id
 type: external
 licenses: ["MIT","GPL"]
 default: "1.0.0"
+scripts:
+  prepare: source scripts/prepare.sh
+  publish: source scripts/publish.sh
+  check: source scripts/check.sh
 dependencies:
   - id: dep1
     type: external
@@ -31,6 +35,10 @@ configurations:
 versions:
   - id: "1.0.0"
     default: "build"
+    scripts:
+      prepare: source scripts/prepare.sh
+      publish: source scripts/publish.sh
+      check: source scripts/check.sh
     configurations:
       - id: "new_build"
         run: source configurations/new_default.sh
