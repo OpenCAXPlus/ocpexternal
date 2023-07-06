@@ -25,13 +25,18 @@ Read our tutorial or watch the tutorial video (both coming soon).
 - [ ] run the External Build workflow
 
 ## Some rules
-1. Structure of the compressed source code must be like ocp/external/external_id/version/source, where the source code resides. The ocp.yml file should be copied to ocp/external/external_id/version folder.
+### For external projects
+1. Structure of the compressed source code must be resides in ocp/external/external_id/version/source. The ocp.yml file should be copied to ocp/external/external_id/version folder.
 2. Must use tar.xz to compress the ocp folder
 3. The install script must install compiled software to configuration subdirectory under ocp/external/external_id/version/install folder.
+
+### For developers
+1. You should create a release and tag once a new version or configuration of the external project is added.
+2. You should be aware that scripts maybe used by multiple versions and configurations, so be careful when you modify any existing scripts. 
 
 ## Folder structure explained
 - scripts, useful scripts but won't be included into the distributed compress file.
     - prepare.sh, to prepare the folder structure for external source. It must located in ocp/external/external_id/version/source
     - publish.sh, to xz compress the external source code and publish to OSS bucket. This should only to be used by the OpenCAX+ runner.
     - install.sh, 
-- config, contains specific build configuration scripts to install different build configuration of the source code. You must put any build files into a build subfolder, and all install files into the install subfolder.
+- configurations, contains specific build configuration scripts to install different build configuration of the source code. You must put any build files into a build subfolder, and all install files into the install subfolder.

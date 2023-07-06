@@ -1,0 +1,292 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "licenses": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "default": {
+        "type": "string"
+      },
+      "dependencies": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "version": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "version"
+            ]
+          }
+        ]
+      },
+      "configurations": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "run": {
+                "type": "string"
+              },
+              "dependencies": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "versions": {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "default": {
+                                "type": "string"
+                              },
+                              "configurations": {
+                                "type": "array",
+                                "items": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id"
+                                    ]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id"
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "default",
+                              "configurations"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "type",
+                      "versions"
+                    ]
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "run",
+              "dependencies"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "run": {
+                "type": "string"
+              },
+              "dependencies": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "versions": {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "type",
+                      "versions"
+                    ]
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "run",
+              "dependencies"
+            ]
+          }
+        ]
+      },
+      "versions": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "default": {
+                "type": "string"
+              },
+              "configurations": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "run": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "run"
+                    ]
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "default",
+              "configurations"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "default": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "default"
+            ]
+          }
+        ]
+      }
+    },
+    "required": [
+      "name",
+      "id",
+      "type",
+      "licenses",
+      "default",
+      "dependencies",
+      "configurations",
+      "versions"
+    ]
+  }

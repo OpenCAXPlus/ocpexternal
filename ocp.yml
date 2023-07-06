@@ -1,16 +1,38 @@
 name: external_name
 id: external_id
 type: external
-default:
-  version: "2.0.0"
-  config: build
-versions:
-  - id: "1.0.0"
-  - id: "2.0.0"
-configs:
-  - id: build
-    run: source config/default.sh
+licenses: ["MIT","GPL"]
+default: "1.0.0"
 dependencies:
   - id: dep1
     type: external
     version: ["1.0.0", "2.0.0"]
+configurations:
+  - id: "build1"
+    run: source configurations/build1.sh
+    dependencies:
+      - id: dep1
+        type: external
+        versions: 
+          - id : "1.0.0"
+            default: "build1"
+            configurations: 
+              - id: "build1"
+              - id: "build2"
+          - id : "2.0.0"
+  - id: "build2"
+    run: source configurations/build2.sh
+    dependencies:
+      - id: dep1
+        type: external
+        versions: 
+          - id: "1.0.0"
+          - id:  "2.0.0"
+versions:
+  - id: "1.0.0"
+    default: "build"
+    configurations:
+      - id: "new_build"
+        run: source configurations/new_default.sh
+  - id: "2.0.0"
+    default: "build"
