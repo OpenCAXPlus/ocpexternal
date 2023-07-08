@@ -16,10 +16,13 @@ versions: # list of all versions, to make this easier for human to read there sh
 scripts: # some scripts that developers may run
   - id: prepare # id is used as a reference for others to find this script
     run: scripts/prepare # run gives you the script to run (without extension)
+    args: ["version","uid"]
   - id: publish
     run : scripts/publish
+    args: ["version","uid"]
   - id: check
     run: scripts/check
+    args: ["version","uid"]
 dependencies: # some dependencies that will be later referred by the configurations
   - id: dep1 # id is how the dependencies can be later referred
     uid: dep # uid is the unique identifier that we use to locate the tar.xz file 
