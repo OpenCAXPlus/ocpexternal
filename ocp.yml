@@ -5,24 +5,24 @@ licenses: ["MIT","GPL"] # the external project's licenses
 default: # set some default values
   version: "1.0.0" # the default version to be installed if not specified in the command
   configuration: "build" # the default config if not specified 
-  scripts: {prepare: prepare, publish: publish, check: check} # some scripts that you can run 
+  scripts: ["prepare", "publish", "check"] # some scripts that you can run 
   dependencies: ["dep1"]
 versions: # list of all versions, to make this easier for human to read there should be no hidden parts for each item
   - id: "1.0.0" # the version number this will be used in the tar.xz file's name
     default: "build" # override the default configurations
-    scripts: {prepare: prepare, publish: publish, check: check} # override the default scripts
+    scripts:  ["prepare", "publish", "check"] # override the default scripts
     configurations: ["build","new_build"]
   - id: "2.0.0" # if nothing is specified, then the scripts, and configurations value will be taken from default part
 scripts: # some scripts that developers may run
   - id: prepare # id is used as a reference for others to find this script
     run: scripts/prepare # run gives you the script to run (without extension)
-    args: ["version","uid"]
+    arguments: ["@version","@uid"]
   - id: publish
     run : scripts/publish
-    args: ["version","uid"]
+    arguments: ["@version","@uid"]
   - id: check
     run: scripts/check
-    args: ["version","uid"]
+    arguments: ["@version","@uid"]
 dependencies: # some dependencies that will be later referred by the configurations
   - id: dep1 # id is how the dependencies can be later referred
     uid: dep # uid is the unique identifier that we use to locate the tar.xz file 
