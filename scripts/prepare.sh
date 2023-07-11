@@ -24,7 +24,7 @@ echo "Create ocp folder structure"
 tar -xzf $gz_file -C $dir --strip-components=1
 echo "Extract files to ocp folder"
 
-cp -r config "$dir/.."
+cp -r configurations "$dir/.."
 echo "Copy all configurations to ocp folder"
 cp ocp.yml "$dir/.."
 echo "Copy ocp.yml to ocp folder"
