@@ -1,4 +1,4 @@
-name: spdlog Publish
+name: External Publish
 defaults:
   run:
     shell: bash -ileo pipefail {0}
