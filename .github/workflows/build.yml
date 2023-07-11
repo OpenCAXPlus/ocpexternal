@@ -25,7 +25,5 @@ jobs:
         uses: actions/checkout@v3
       - name: Prepare and Install
         run: |
-          external_id=spdlog
-          external_version=1.11.0
-          source scripts/prepare.sh $external_version $external_id
-          source ocp/external/$external_id/$external_version/configurations/default.sh
+          source scripts/prepare.sh ${{ github.event.inputs.version }} ${{ github.event.inputs.id }}
+          source ocp/external/${{ github.event.inputs.id }}/${{ github.event.inputs.version }}/configurations/default.sh
