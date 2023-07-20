@@ -16,6 +16,7 @@ Read our tutorial or watch the tutorial video (both coming soon).
 - [ ] scripts/prepare.sh
 - [ ] scripts/install.sh
 - [ ] Create any new configurations build and install script in the config folder
+- [ ] Create new cmake file for each corresponding configuration
 
 ## Things you need to check before publish the external project
 
@@ -40,6 +41,7 @@ Read our tutorial or watch the tutorial video (both coming soon).
     - publish.sh, to xz compress the external source code and publish to OSS bucket. This should only to be used by the OpenCAX+ runner.
     - install.sh, 
 - configurations, contains specific build configuration scripts to install different build configuration of the source code. You must put any build files into a build subfolder, and all install files into the install subfolder.
+- cmake, contains the dependency cmake file for each configuration. You just put the find_package() commands or any necessary preparation before others to use this package in each of the cmake file.
 
 ## The ocp.yml file
 
