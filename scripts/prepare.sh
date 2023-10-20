@@ -4,6 +4,7 @@
 # get command line arguments
 version=${1}
 external_id=${2}
+clean=${3:-clean}
 
 # prepare necessary variables
 url="https://github.com/gabime/spdlog/archive/refs/tags/v$version.tar.gz"
@@ -14,9 +15,11 @@ gz_file="$external_id-v$version.tar.gz"
 cd $script_dir/..
 
 # start the script
-rm -rf *.tar.gz
-wget -O $gz_file $url
-echo "Download $external_id $version"
+if [ "$clean" == "clean" ]; then
+  rm -rf *.tar.gz
+  wget -O $gz_file $url
+  echo "Download $external_id $version"
+fi
 rm -rf ocp
 echo "Remove previous ocp folder"
 mkdir -p "$dir"
