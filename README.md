@@ -8,6 +8,18 @@ External dependencies are used for both toolkits or starters of the OpenCAX+ SDK
 
 Read our tutorial or watch the tutorial video (both coming soon).
 
+## Step by step guidance
+
+1. create your own repository from this template
+2. check the package's download url, and modify the prepare.sh script, set the default version and id
+3. run the prepare.sh script and check if the downloaded files look good
+4. edit the configuration scripts
+5. cd into the ocp folder and run the configuration scripts to check if everything builds ok
+5. edit the ocp.yml file
+6. edit the check.sh script, set the default version and if, then run the script.
+7. edit the build.yml workflow file, set the default version and id
+8. edit the publish.yml workflow file, set the default version and id
+
 ## Things that you need to modify
 
 - [ ] This README.md file, also remember to add the workflow badge
