@@ -42,3 +42,16 @@ configurations: # list of configs that is referred in by the versions
   - id: "build2" # this is the config id that is referred in the versions section
     run: configurations/build2
     dependencies: ["dep1@version@config"] # override the default dependencies
+environment:
+  - id: "intel"
+    variables:
+      - id: "CC"
+        value: "icc"
+      - id: "CXX"
+        value: "icpc"
+      - id: "FC"
+        value: "ifort"
+      - id: "F77"
+        value: "ifort"
+      - id: "F90"
+        value: "ifort"
