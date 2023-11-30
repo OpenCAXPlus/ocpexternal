@@ -6,8 +6,8 @@ config=$(basename "${BASH_SOURCE[0]}" .sh)
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 root="$script_dir/.."
 source_dir="$script_dir/../source"
-build_dir="$script_dir/../build/$config"
-install_dir="$script_dir/../install/$config"
+build_dir="$script_dir/../build/$OCP_COMPILER/$config"
+install_dir="$script_dir/../install/$OCP_COMPILER/$config"
 
 cmake -S $source_dir -B $build_dir -DCMAKE_INSTALL_PREFIX=$install_dir -G Ninja
 cmake --build $build_dir --target install
